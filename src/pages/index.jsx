@@ -194,7 +194,7 @@ export default class Top extends React.Component {
             </MainTxtGrp>
           </div>
         </Main>
-        <form name="contact" method="POST" netlify='true'>
+        <form name="contact" method="POST" dataNetlify="true">
           <p>
             <label>Your Name: <input type="text" name="name" /></label>
           </p>
