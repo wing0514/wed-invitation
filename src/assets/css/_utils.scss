@@ -1,0 +1,71 @@
+$breakP: 768px;
+$pcSmall: 1120px;
+
+@mixin pc {
+  @media (min-width:($breakP + 1)) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media (max-width:($breakP)) {
+    @content;
+  }
+}
+
+.u-sp-dn {
+  @include sp {
+    display: none;
+  }
+}
+
+.u-pc-dn {
+  @include pc {
+    display: none;
+  }
+}
+
+.u-scroll-animation-img {
+  position: relative;
+
+  &::after {
+    background-color: #ffffff;
+    background-color: #ffffff;
+    content: '';
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-origin: right;
+    transition: transform .6s ease;
+    width: 100%;
+    will-change: transform;
+    z-index: 20;
+
+    .u-scroll-animation-section & {
+      transition-delay: .6s;
+    }
+  }
+
+  .is-anime &,
+  &.is-anime {
+
+    &::after {
+      transform: scaleX(0);
+    }
+  }
+}
+
+.u-scroll-animation-hiddenItem {
+  opacity: 0;
+  transition: opacity .4s ease;
+
+  .u-scroll-animation-section & {
+    transition-delay: .6s;
+  }
+
+  .is-anime &,
+  &.is-anime {
+    opacity: 1;
+  }
+}
