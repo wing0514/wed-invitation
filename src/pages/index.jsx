@@ -220,27 +220,30 @@ export default class Top extends React.Component {
               <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12961.821516322088!2d139.782024!3d35.69041!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbb7d8f1b6ba409fb!2z5p2x5Lqs44Ki44OV44Ot44OH44Kj44OG!5e0!3m2!1sja!2sjp!4v1579433285832!5m2!1sja!2sjp" width="600" height="450" frameBorder="0" allowFullScreen=""></iframe>
             </InfoMap>
           </Section>
-          <form name="contact" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="contact" />
-          <p>
-            <label>Your Name: <input type="text" name="name" /></label>
-          </p>
-          <p>
-            <label>Your Email: <input type="email" name="email" /></label>
-          </p>
-          <p>
-            <label>Your Role: <select name="role[]" multiple>
-              <option value="leader">Leader</option>
-              <option value="follower">Follower</option>
-            </select></label>
-          </p>
-          <p>
-            <label>Message: <textarea name="message"></textarea></label>
-          </p>
-          <p>
-            <button type="submit">Send</button>
-          </p>
-        </form>
+          <Section>
+
+            <form name="contact" method="POST" data-netlify="true">
+              <input type="hidden" name="form-name" value="contact" />
+              <p>
+                <label>Your Name: <input type="text" name="name" /></label>
+              </p>
+              <p>
+                <label>Your Email: <input type="email" name="email" /></label>
+              </p>
+              <p>
+                <label>Your Role: <select name="role[]" multiple>
+                  <option value="leader">Leader</option>
+                  <option value="follower">Follower</option>
+                </select></label>
+              </p>
+              <p>
+                <label>Message: <textarea name="message"></textarea></label>
+              </p>
+              <p>
+                <button type="submit">Send</button>
+              </p>
+            </form>
+          </Section>
         </Body>
       </Container>
     )

@@ -102,8 +102,8 @@ export default class Loader extends React.Component {
     this.bg = null;
   }
   componentDidMount() {
-    document.body.position = 'fixed';
-    document.body.height = '100%';
+    document.body.style.position = 'fixed';
+    document.body.style.height = '100%';
     TweenMax.to(this.loaderIcon03, 0.5, {opacity: 1, y: 0});
     TweenMax.to(this.loaderIcon02, 0.5, {opacity: 1, y: 0, delay: 0.3});
     TweenMax.to(this.loaderIcon01, 0.5, {opacity: 1, y: 0, delay: 0.6, onComplete:
@@ -116,8 +116,9 @@ export default class Loader extends React.Component {
             () => {
               TweenMax.to(this.bg, 1, {WebkitMaskPosition: '0 -100%', opacity: 0});
               TweenMax.to(this.loaderText.getElementsByTagName('span'), 1, {letterSpacing: '0.1em'});
-              document.body.position = 'relative';
-              document.body.height = 'auto';
+              this.props.changeState();
+              document.body.style.position = '';
+              document.body.style.height = '';
             }
           });
         }
