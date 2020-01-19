@@ -101,10 +101,9 @@ export default class Loader extends React.Component {
     this.loaderIcon02 = null;
     this.loaderIcon03 = null;
     this.bg = null;
-    disableBodyScroll();
   }
   componentDidMount() {
-    this.windowH = window.innerHeight;
+    disableBodyScroll();
     TweenMax.to(this.loaderIcon03, 0.5, {opacity: 1, y: 0});
     TweenMax.to(this.loaderIcon02, 0.5, {opacity: 1, y: 0, delay: 0.3});
     TweenMax.to(this.loaderIcon01, 0.5, {opacity: 1, y: 0, delay: 0.6, onComplete:
