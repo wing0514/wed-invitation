@@ -6,7 +6,6 @@ import iconLoader01 from '../../assets/img/icon-loader-01.svg'
 import iconLoader02 from '../../assets/img/icon-loader-02.svg'
 import iconLoader03 from '../../assets/img/icon-loader-03.svg'
 import { TweenMax } from 'gsap';
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 const Container = styled.div`
   position: absolute;
@@ -103,7 +102,8 @@ export default class Loader extends React.Component {
     this.bg = null;
   }
   componentDidMount() {
-    disableBodyScroll();
+    document.body.position = 'fixed';
+    document.body.height = '100%';
     TweenMax.to(this.loaderIcon03, 0.5, {opacity: 1, y: 0});
     TweenMax.to(this.loaderIcon02, 0.5, {opacity: 1, y: 0, delay: 0.3});
     TweenMax.to(this.loaderIcon01, 0.5, {opacity: 1, y: 0, delay: 0.6, onComplete:
@@ -116,8 +116,8 @@ export default class Loader extends React.Component {
             () => {
               TweenMax.to(this.bg, 1, {WebkitMaskPosition: '0 -100%', opacity: 0});
               TweenMax.to(this.loaderText.getElementsByTagName('span'), 1, {letterSpacing: '0.1em'});
-              enableBodyScroll();
-              this.props.changeState();
+              document.body.position = 'relative';
+              document.body.height = 'auto';
             }
           });
         }
