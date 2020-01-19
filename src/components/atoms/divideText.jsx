@@ -29,7 +29,7 @@ export default class DivideText extends React.Component {
       display: inline-block;
       ${this.createCSS()};
       opacity: 0;
-      transition: transform 2s ease 0.5s, opacity 1.6s ease 0.5s;
+      transition: transform 2s linear 0.5s, opacity 1.6s linear 0.5s;
       .is-shown & {
         opacity: 1;
         transform: translate3d(0, 0 ,0) rotate3d(0, 0, 0, 0deg)

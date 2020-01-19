@@ -2,9 +2,9 @@
 /* Variables */
 
 // FONTS
-export const fontOswald = '"oswald", sans-serif'
-export const fontHeding =`'Oswald', sans-serif`
-export const fontYugo = '"游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif'
+export const fontOswald = "'Oswald', sans-serif";
+export const fontHeding = fontOswald;
+export const fontYugo = '"Sawarabi Gothic", "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", sans-serif';
 
 // COLORS
 export const black = '#0D1126'

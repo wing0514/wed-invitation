@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 
 import { Global, css } from '@emotion/core'
 import { black } from './_style'
+import Loader from './components/organisms/loader';
 
 export default class Layout extends React.Component {
   constructor(props) {
@@ -35,7 +36,7 @@ export default class Layout extends React.Component {
           <meta property="og:image" content="サムネイル画像のURLをお願い致します" />
           <meta property="og:description" content="招待状"/>
           <meta property="og:locale" content="ja_JP" />
-          <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css?family=Oswald|Sawarabi+Gothic&display=swap" rel="stylesheet" />
         </Helmet>
         {children}
       </>
