@@ -17,6 +17,8 @@ const Btn = styled.button`
   background: ${blue};
   font-size: 15px;
   text-align: left;
+  letter-spacing: 0.08em;
+  color: #fff;
   &::before, &::after {
     content: "";
     display: block;
@@ -24,7 +26,7 @@ const Btn = styled.button`
     top: 0;
     bottom: 0;
     margin: auto;
-    background-color: ${black};
+    background-color: #fff;
   }
   &::before {
     right: 21px;
@@ -47,6 +49,7 @@ const Content = styled.div`
   height: 0;
   overflow: hidden;
   background-color: #fff;
+  color: ${black};
 `
 
 const Inner = styled.div`

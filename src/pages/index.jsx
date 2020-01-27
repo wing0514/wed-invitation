@@ -7,10 +7,15 @@ import imgMain from '../assets/img/img-main-01.jpg'
 import imgProfile01 from '../assets/img/img-tsu.jpg'
 import imgProfile02 from '../assets/img/img-ak.jpg'
 import ActionText from '../components/atoms/actionText';
-import { TweenMax } from 'gsap';
 import Loader from '../components/organisms/loader';
 import MainSlider from '../components/organisms/mainSlide';
 import Accordion from '../components/molecules/Accordion';
+import iconafterparty from '../assets/img/icon-afterparty.svg'
+import iconparty from '../assets/img/icon-party.svg'
+import iconreseption from '../assets/img/icon-reseption.svg'
+import iconwedding from '../assets/img/icon-wedding.svg'
+import imgschedule from '../assets/img/img-schedule.jpg'
+import Input from '../components/atoms/input';
 
 const Container = styled.div`
 `
@@ -60,9 +65,29 @@ const MainTxt = styled.p`
 const Body = styled.div`
   position: relative;
   padding: 89px 34px;
-  background-color: rgba(255,255,255,0.7);
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${black};
+    opacity: 0.5;
+  }
 `
 const Section = styled.section`
+  position: relative;
+  padding-top: 21px;
+  color: #fff;
+
+  color: ${props => props.schedule ? `${black}` : `#fff`};
+  ${props => props.schedule && `margin: 89px -34px 55px;`}
+  ${props => props.schedule && `padding: 0;`}
+  ${props => props.schedule && `background-image: url(${imgschedule});`}
+  ${props => props.schedule && `background-size: cover;`}
+  ${props => props.schedule && `& > div { padding: 89px 34px };`}
   & + & {
     margin-top: 89px;
   }
@@ -71,6 +96,14 @@ const Section = styled.section`
     font-family: ${fontHeding};
     font-size: 21px;
     font-weight: normal;
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 1em;
+      height: 2px;
+      margin-right: 3px;
+      background: linear-gradient(90deg, rgba(141,206,202,1) 0%, rgba(89,183,209,1) 79%);
+    }
   }
 `
 const SectionTitle = styled.h2`
@@ -78,6 +111,50 @@ const SectionTitle = styled.h2`
   line-height: 1;
   font-weight: normal;
 `
+
+const Date = styled.div`
+  font-family: ${fontHeding};
+  font-size: 21px;
+  span {
+    color: ${blue};
+  }
+`
+const Schedule = styled.div`
+`
+
+const ScheduleItem = styled.dl`
+  font-size: 13px;
+  line-height: 1;
+  & + dl {
+    margin-top: 21px;
+  }
+  dt {
+    margin-bottom: 13px;
+    font-family: ${fontHeding};
+    font-size: 21px;
+  }
+  dd {
+    display: flex;
+    align-items: center;
+    position: relative;
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 34px;
+      height: 34px;
+      margin-right: 13px;
+      background-size: contain;
+      background-image: url(${props => props.icon});
+    }
+    span {
+      display: block;
+      margin-top: 8px;
+      font-family: ${fontHeding};
+      font-size: 21px;
+    }
+  }
+`
+
 const ProfileBlock = styled.div`
 
 `
@@ -128,6 +205,9 @@ const InfoMap = styled.div`
     width: 100%;
     height: 100%;
   }
+`
+
+const Form = styled.div`
 `
 
 export default class Top extends React.Component {
@@ -181,9 +261,31 @@ export default class Top extends React.Component {
               </ProfileTxts>
             </ProfileBlock>
           </Section>
-          <Section>
-            <SectionTitle><ActionText>SCHEDULE</ActionText></SectionTitle>
-
+          <Section schedule>
+            <div>
+              <SectionTitle><ActionText isBlack>SCHEDULE</ActionText></SectionTitle>
+              <h3>DATE</h3>
+              <Date>2020.4.11 <span>Sat.</span></Date>
+              <h3>TIMETABLE</h3>
+              <Schedule>
+                <ScheduleItem icon={iconreseption}>
+                  <dt>14:45 ~</dt>
+                  <dd><div>受付開始<span>START ACCEPTING</span></div></dd>
+                </ScheduleItem>
+                <ScheduleItem icon={iconwedding}>
+                  <dt>15:45 ~</dt>
+                  <dd><div>挙式<span>WEDDING</span></div></dd>
+                </ScheduleItem>
+                <ScheduleItem icon={iconparty}>
+                  <dt>16:45 ~</dt>
+                  <dd><div>披露宴<span>RECEPTION</span></div></dd>
+                </ScheduleItem>
+                <ScheduleItem icon={iconafterparty}>
+                  <dt>20:00 ~</dt>
+                  <dd><div>二次会<span>SECOND PARTY</span></div></dd>
+                </ScheduleItem>
+              </Schedule>
+            </div>
           </Section>
           <Section>
             <SectionTitle><ActionText>ACCESS</ActionText></SectionTitle>
@@ -221,28 +323,34 @@ export default class Top extends React.Component {
             </InfoMap>
           </Section>
           <Section>
-
-            <form name="contact" method="POST" data-netlify="true">
-              <input type="hidden" name="form-name" value="contact" />
-              <p>
-                <label>Your Name: <input type="text" name="name" /></label>
-              </p>
-              <p>
-                <label>Your Email: <input type="email" name="email" /></label>
-              </p>
-              <p>
-                <label>Your Role: <select name="role[]" multiple>
-                  <option value="leader">Leader</option>
-                  <option value="follower">Follower</option>
-                </select></label>
-              </p>
-              <p>
-                <label>Message: <textarea name="message"></textarea></label>
-              </p>
-              <p>
-                <button type="submit">Send</button>
-              </p>
-            </form>
+            <SectionTitle><ActionText>ENTRY</ActionText></SectionTitle>
+            <Form>
+              <form name="contact" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="contact" />
+                <h4>名前</h4>
+                <p>
+                  <label><Input type="text" name="last-name" placeHolder="姓"/></label>
+                  <label>名<Input type="text" name="first-name" /></label>
+                </p>
+                <h4>ふりがな</h4>
+                <p>
+                  <label>せい<Input type="text" name="last-name-kana" /></label>
+                  <label>めい<Input type="text" name="first-name-kana" /></label>
+                </p>
+                <p>
+                  <label>Your Role: <select name="role[]" multiple>
+                    <option value="leader">Leader</option>
+                    <option value="follower">Follower</option>
+                  </select></label>
+                </p>
+                <p>
+                  <label>Message: <textarea name="message"></textarea></label>
+                </p>
+                <p>
+                  <button type="submit">Send</button>
+                </p>
+              </form>
+            </Form>
           </Section>
         </Body>
       </Container>
