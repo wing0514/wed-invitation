@@ -1,9 +1,8 @@
 import React from 'react'
 import InView from 'react-intersection-observer';
 import styled from '@emotion/styled';
-import { fontHeding, white, text, black, blue, fontOswald } from '../_style'
+import { fontHeding, green, text, black, blue, fontOswald } from '../_style'
 
-import imgMain from '../assets/img/img-main-01.jpg'
 import imgProfile01 from '../assets/img/img-tsu.jpg'
 import imgProfile02 from '../assets/img/img-ak.jpg'
 import ActionText from '../components/atoms/actionText';
@@ -15,7 +14,9 @@ import iconparty from '../assets/img/icon-party.svg'
 import iconreseption from '../assets/img/icon-reseption.svg'
 import iconwedding from '../assets/img/icon-wedding.svg'
 import imgschedule from '../assets/img/img-schedule.jpg'
+import imgentry from '../assets/img/img-entry.jpg'
 import Input from '../components/atoms/input';
+import Radio from '../components/atoms/radio';
 
 const Container = styled.div`
 `
@@ -64,7 +65,7 @@ const MainTxt = styled.p`
 
 const Body = styled.div`
   position: relative;
-  padding: 89px 34px;
+  padding: 89px 34px 0;
   &::before {
     content: "";
     display: block;
@@ -84,10 +85,24 @@ const Section = styled.section`
 
   color: ${props => props.schedule ? `${black}` : `#fff`};
   ${props => props.schedule && `margin: 89px -34px 55px;`}
-  ${props => props.schedule && `padding: 0;`}
+  ${props => props.entry && `margin: 89px -34px 0;`}
+  ${props => (props.schedule || props.entry) && `padding: 0;`}
   ${props => props.schedule && `background-image: url(${imgschedule});`}
-  ${props => props.schedule && `background-size: cover;`}
-  ${props => props.schedule && `& > div { padding: 89px 34px };`}
+  ${props => props.entry && `background-image: url(${imgentry});`}
+  ${props => (props.schedule || props.entry) && `background-size: cover;`}
+  ${props => (props.schedule || props.entry) && `& > div { position: relative; padding: 89px 34px };`}
+  ${props => props.schedule && `
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    opacity: 0.3;
+  }`}
   & + & {
     margin-top: 89px;
   }
@@ -208,6 +223,35 @@ const InfoMap = styled.div`
 `
 
 const Form = styled.div`
+  h4 {
+    margin-bottom: 8px;
+  }
+  button[type="submit"] {
+    display: block;
+    width: 144px;
+    margin: 34px auto 0;
+    padding: 13px;
+    background-color: ${green};
+    font-size: 21px;
+    font-family: ${fontHeding};
+    line-height: 1;
+    letter-spacing: 0.3em;
+  }
+`
+const FormCol = styled.div`
+  display: flex;
+  ${props => props.center && `justify-content: center;`}
+  & + h4 {
+    margin-top: 21px;
+  }
+  textarea {
+    width: 100%;
+    padding: 8px;
+    background-color: #fff;
+    &:focus {
+      outline: none;
+    }
+  }
 `
 
 export default class Top extends React.Component {
@@ -322,35 +366,52 @@ export default class Top extends React.Component {
               <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12961.821516322088!2d139.782024!3d35.69041!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbb7d8f1b6ba409fb!2z5p2x5Lqs44Ki44OV44Ot44OH44Kj44OG!5e0!3m2!1sja!2sjp!4v1579433285832!5m2!1sja!2sjp" width="600" height="450" frameBorder="0" allowFullScreen=""></iframe>
             </InfoMap>
           </Section>
-          <Section>
-            <SectionTitle><ActionText>ENTRY</ActionText></SectionTitle>
-            <Form>
-              <form name="contact" method="POST" data-netlify="true">
-                <input type="hidden" name="form-name" value="contact" />
-                <h4>名前</h4>
-                <p>
-                  <label><Input type="text" name="last-name" placeHolder="姓"/></label>
-                  <label>名<Input type="text" name="first-name" /></label>
-                </p>
-                <h4>ふりがな</h4>
-                <p>
-                  <label>せい<Input type="text" name="last-name-kana" /></label>
-                  <label>めい<Input type="text" name="first-name-kana" /></label>
-                </p>
-                <p>
-                  <label>Your Role: <select name="role[]" multiple>
-                    <option value="leader">Leader</option>
-                    <option value="follower">Follower</option>
-                  </select></label>
-                </p>
-                <p>
-                  <label>Message: <textarea name="message"></textarea></label>
-                </p>
-                <p>
-                  <button type="submit">Send</button>
-                </p>
-              </form>
-            </Form>
+          <Section entry>
+            <div>
+              <SectionTitle><ActionText bg={'#fff'}>ENTRY</ActionText></SectionTitle>
+              <Form>
+                <form name="contact" method="POST" data-netlify="true">
+                  <input type="hidden" name="form-name" value="contact" />
+                  <h4>挙式・披露宴</h4>
+                  <FormCol center>
+                    <Radio name="wedding-attend" id="attend-01" defaultChecked>出席</Radio>
+                    <Radio name="wedding-attend" id="decline-01">欠席</Radio>
+                  </FormCol>
+                  <h4>二次会</h4>
+                  <FormCol center>
+                    <Radio name="party-attend" id="attend-02" defaultChecked>出席</Radio>
+                    <Radio name="party-attend" id="decline-02">欠席</Radio>
+                  </FormCol>
+                  <h4>名前</h4>
+                  <FormCol>
+                    <Input type="text" name="last-name" placeHolder="姓" isHalf/>
+                    <Input type="text" name="first-name" placeHolder="名" isHalf/>
+                  </FormCol>
+                  <h4>ふりがな</h4>
+                  <FormCol>
+                    <Input type="text" name="last-name-kana" placeHolder='せい' isHalf/>
+                    <Input type="text" name="first-name-kana" placeHolder='めい' isHalf/>
+                  </FormCol>
+                  <h4>郵便番号</h4>
+                  <FormCol>
+                    <Input type="text" name="zip-code" id="zip" placeHolder='' isHalf/>
+                  </FormCol>
+                  <h4>住所</h4>
+                  <FormCol>
+                    <Input type="text" name="address" id="addr"/>
+                  </FormCol>
+                  <h4>メッセージ</h4>
+                  <FormCol>
+                    <textarea name="message" cols="30" rows="5"></textarea>
+                  </FormCol>
+                  <h4>その他（ご要望・アレルギーなど）</h4>
+                  <FormCol>
+                    <textarea name="other" cols="30" rows="5"></textarea>
+                  </FormCol>
+                  <button type="submit">SEND</button>
+                </form>
+              </Form>
+            </div>
           </Section>
         </Body>
       </Container>

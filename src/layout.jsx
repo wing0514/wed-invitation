@@ -37,6 +37,7 @@ export default class Layout extends React.Component {
           <meta property="og:description" content="招待状"/>
           <meta property="og:locale" content="ja_JP" />
           <link href="https://fonts.googleapis.com/css?family=Oswald|Sawarabi+Gothic&display=swap" rel="stylesheet" />
+          <script src="https://zipaddr.github.io/zipaddrj.js" charSet="UTF-8"></script>
         </Helmet>
         {children}
       </>

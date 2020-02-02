@@ -31,7 +31,7 @@ const Bg = styled.div`
 `
 const LoaderInner = styled.div`
   position: absolute;
-  top: -13%;
+  top: -86px;
   bottom: 0;
   right: 0;
   left: 0;
@@ -61,7 +61,7 @@ const LoaderInner = styled.div`
 `
 const LorderText = styled.div`
   position: absolute;
-  top: -6.1vh;
+  top: -40px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -111,8 +111,8 @@ export default class Loader extends React.Component {
         TweenMax.to(this.loaderIcon01, 0.5, {opacity: 0, x: '-20px', y: '-20px', delay: 0.2, onComplete:
         () => {
           TweenMax.to(this.loaderText, 0.5, {height: '29px'});
-          TweenMax.to(this.loaderIcon03, 0.5, {y: `${30 / 667 * 100}vh`});
-          TweenMax.to(this.loaderIcon02, 0.5, {y: `${-32 / 667 * 100}vh`, onComplete:
+          TweenMax.to(this.loaderIcon03, 0.5, {y: `30px`});
+          TweenMax.to(this.loaderIcon02, 0.5, {y: `-32px`, onComplete:
             () => {
               TweenMax.to(this.bg, 1, {WebkitMaskPosition: '0 -100%', opacity: 0});
               TweenMax.to(this.loaderText.getElementsByTagName('span'), 1, {letterSpacing: '0.1em'});

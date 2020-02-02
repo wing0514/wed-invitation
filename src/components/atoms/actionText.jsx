@@ -11,6 +11,7 @@ export default class ActionText extends React.Component {
 
   render() {
     const COLOR = this.props.isBlack ? `${black}` : '#fff';
+    const BG = this.props.bg ? `${this.props.bg}` : `${blue}`;
     const Container = styled.div`
       display: inline-block;
       position: relative;
@@ -26,7 +27,7 @@ export default class ActionText extends React.Component {
         right: 0;
         width: 100%;
         height: 100%;
-        background: ${blue};
+        background: ${BG};
         will-change: transform;
         transform-origin: right;
         transition: transform 0.9s linear 0.3s;
@@ -35,7 +36,7 @@ export default class ActionText extends React.Component {
         position: relative;
         margin-right: -0.1em;
         margin-top: -0.05em;
-        background: linear-gradient(to right, ${COLOR} 0%, ${COLOR} 33.3333%, transparent 33.3333%, transparent 66.6666% ,${blue} 66.6666%, ${blue} 100%);
+        background: linear-gradient(to right, ${COLOR} 0%, ${COLOR} 33.3333%, transparent 33.3333%, transparent 66.6666% ,${BG} 66.6666%, ${BG} 100%);
         background-size: 300% 100%;
         background-position: 100% 0;
         -webkit-text-fill-color: transparent;
