@@ -3,7 +3,7 @@ import React from 'react'
 import styled from '@emotion/styled';
 import { TweenMax, Power1 } from 'gsap';
 import { InView } from 'react-intersection-observer';
-import { black, blue, text } from '../../_style';
+import { black, blue, text, green } from '../../_style';
 
 const Container = styled.div`
   & + & {
@@ -13,8 +13,8 @@ const Container = styled.div`
 const Btn = styled.button`
   position: relative;
   width: 100%;
-  padding: 21px;
-  background: ${blue};
+  padding: 13px 21px;
+  background: linear-gradient(to right, ${blue}, ${green});
   font-size: 15px;
   text-align: left;
   letter-spacing: 0.08em;

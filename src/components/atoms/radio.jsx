@@ -35,6 +35,7 @@ export default class Radio extends React.Component {
             height: 100%;
             background-image: url(${icon});
             background-size: contain;
+            background-position: center;
             transition: opacity 0.6s ease;
             opacity: 0;
           }

@@ -38,6 +38,7 @@ const LoaderInner = styled.div`
   width: 80px;
   height: 80px;
   margin: auto;
+  z-index: 9999;
   img {
     display: block;
     opacity: 0;

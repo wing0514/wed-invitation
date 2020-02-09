@@ -1,7 +1,7 @@
 import React from 'react'
 import InView from 'react-intersection-observer';
 import styled from '@emotion/styled';
-import { fontHeding, green, text, black, blue, fontOswald } from '../_style'
+import { fontHeding, green, text, black, blue, fontOswald, white } from '../_style'
 
 import imgProfile01 from '../assets/img/img-tsu.jpg'
 import imgProfile02 from '../assets/img/img-ak.jpg'
@@ -17,6 +17,37 @@ import imgschedule from '../assets/img/img-schedule.jpg'
 import imgentry from '../assets/img/img-entry.jpg'
 import Input from '../components/atoms/input';
 import Radio from '../components/atoms/radio';
+import Image from '../components/atoms/image';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+import imgSlide01 from '../assets/img/img-slide-01.jpg';
+import imgSlide02 from '../assets/img/img-slide-02.jpg';
+import imgSlide03 from '../assets/img/img-slide-03.jpg';
+import imgSlide04 from '../assets/img/img-slide-04.jpg';
+import imgSlide05 from '../assets/img/img-slide-05.jpg';
+import imgSlide06 from '../assets/img/img-slide-06.jpg';
+import imgSlide07 from '../assets/img/img-slide-07.jpg';
+import imgSlide08 from '../assets/img/img-slide-08.jpg';
+import imgSlide09 from '../assets/img/img-slide-09.jpg';
+import imgSlide10 from '../assets/img/img-slide-10.jpg';
+
+let pictures = [
+  imgSlide01,
+  imgSlide02,
+  imgSlide03,
+  imgSlide04,
+  imgSlide05,
+  imgSlide06,
+  imgSlide07,
+  imgSlide08,
+  imgSlide09,
+  imgSlide10
+]
+
+for (let i = pictures.length - 1; i >= 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+  [pictures[i], pictures[j]] = [pictures[j], pictures[i]];
+}
 
 const Container = styled.div`
 `
@@ -84,7 +115,7 @@ const Section = styled.section`
   color: #fff;
 
   color: ${props => props.schedule ? `${black}` : `#fff`};
-  ${props => props.schedule && `margin: 89px -34px 55px;`}
+  ${props => props.schedule && `margin: 0 -34px 55px;`}
   ${props => props.entry && `margin: 89px -34px 0;`}
   ${props => (props.schedule || props.entry) && `padding: 0;`}
   ${props => props.schedule && `background-image: url(${imgschedule});`}
@@ -188,12 +219,13 @@ const ProfileImg = styled.div`
 const ProfileTxts = styled.div`
   position: relative;
   width: 100%;
-  margin: 21px auto;
+  margin: 21px auto 34px;
   & > div {
     position: relative;
   }
 `
 const ProfileName = styled.div`
+  margin-bottom: 13px;
   font-size: 21px;
   line-height: 1;
   span {
@@ -231,7 +263,7 @@ const Form = styled.div`
     width: 144px;
     margin: 34px auto 0;
     padding: 13px;
-    background-color: ${green};
+    background: linear-gradient(to right, ${blue}, ${green});
     font-size: 21px;
     font-family: ${fontHeding};
     line-height: 1;
@@ -254,6 +286,52 @@ const FormCol = styled.div`
   }
 `
 
+const CarouselWrapper = styled.div`
+  margin: 89px -34px 0;
+  .carousel.carousel-slider {
+    .slide {
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      &.selected {
+        opacity: 1;
+        transition-delay: 0.5s;
+      }
+    }
+    .slider.animated {
+      transition-timing-function: cubic-bezier(.13,.42,.35,.94);
+    }
+    .control-dots .dot {
+      box-shadow: 0px 0px 11px ${white};
+      background: linear-gradient(to right, ${blue}, ${green});
+      &:focus {
+        outline: none;
+      }
+    }
+    .control-arrow {
+      opacity: 1;
+      &::before {
+        position: relative;
+        z-index: 10;
+      }
+      &:hover {
+        background: inherit;
+      }
+    }
+    .control-next.control-arrow:before, .control-prev.control-arrow:before {
+      border-top-width: 13px;
+      border-bottom-width: 13px;
+    }
+    .control-next.control-arrow:before {
+      border-left-width: 8px;
+      border-left-color: ${green};
+    }
+    .control-prev.control-arrow:before {
+      border-right-width: 8px;
+      border-right-color: ${blue};
+    }
+  }
+`
+
 export default class Top extends React.Component {
   constructor(props) {
     super(props);
@@ -264,6 +342,12 @@ export default class Top extends React.Component {
     this.setState({isLoadEnd: true});
   }
   render() {
+    const sliderSettings = {
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    };
     return(
       <Container>
         <Loader changeState={() => this.loadEnd()}></Loader>
@@ -291,7 +375,7 @@ export default class Top extends React.Component {
               <ProfileTxts>
                 <div>
                   <ProfileName>翼<span>TSUBASA</span></ProfileName>
-
+                  <p>1994年5月14日生まれ。</p>
                 </div>
               </ProfileTxts>
 
@@ -301,10 +385,20 @@ export default class Top extends React.Component {
               <ProfileTxts>
                 <div>
                   <ProfileName>茜<span>AKANE</span></ProfileName>
+                  <p>1995年1月23日生まれ。</p>
                 </div>
               </ProfileTxts>
             </ProfileBlock>
           </Section>
+          <CarouselWrapper>
+            <Carousel showThumbs={false} showStatus={false} infiniteLoop transitionTime={800}>
+              {
+                pictures.map((item, i) => {
+                  return(<div key={i}><img src={item} /></div>)
+                })
+              }
+            </Carousel>
+          </CarouselWrapper>
           <Section schedule>
             <div>
               <SectionTitle><ActionText isBlack>SCHEDULE</ActionText></SectionTitle>
@@ -363,7 +457,7 @@ export default class Top extends React.Component {
             </Accordion>
             <h3>MAP</h3>
             <InfoMap>
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12961.821516322088!2d139.782024!3d35.69041!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbb7d8f1b6ba409fb!2z5p2x5Lqs44Ki44OV44Ot44OH44Kj44OG!5e0!3m2!1sja!2sjp!4v1579433285832!5m2!1sja!2sjp" width="600" height="450" frameBorder="0" allowFullScreen=""></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.455379885228!2d139.7798353157626!3d35.69040998019219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601889528c6f796d%3A0xbb7d8f1b6ba409fb!2z5p2x5Lqs44Ki44OV44Ot44OH44Kj44OG!5e0!3m2!1sja!2sjp!4v1581252207376!5m2!1sja!2sjp" width="600" height="450" frameBorder="0" allowFullScreen=""></iframe>
             </InfoMap>
           </Section>
           <Section entry>
