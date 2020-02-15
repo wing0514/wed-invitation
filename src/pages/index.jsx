@@ -17,7 +17,6 @@ import imgschedule from '../assets/img/img-schedule.jpg'
 import imgentry from '../assets/img/img-entry.jpg'
 import Input from '../components/atoms/input';
 import Radio from '../components/atoms/radio';
-import Image from '../components/atoms/image';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import imgSlide01 from '../assets/img/img-slide-01.jpg';
@@ -375,7 +374,7 @@ export default class Top extends React.Component {
               <ProfileTxts>
                 <div>
                   <ProfileName>翼<span>TSUBASA</span></ProfileName>
-                  <p>1994年5月14日生まれ。</p>
+                  <p>永井翼（25歳）<br />★おうし座 ★A型 ★身長･･･170cm ★趣味･･･筋トレ・ラジオ観賞 ★好きな映画･･･ディズニー・マーベル・スターウォーズ ★好きな色･･･#191970 ★座右の銘･･･なんとかなる</p>
                 </div>
               </ProfileTxts>
 
@@ -385,7 +384,7 @@ export default class Top extends React.Component {
               <ProfileTxts>
                 <div>
                   <ProfileName>茜<span>AKANE</span></ProfileName>
-                  <p>1995年1月23日生まれ。</p>
+                  <p>堀内茜（25際）<br />★みずがめ座　★血液型･･･O型　★身長･･･154cm　★趣味･･･海外旅行　★好きな映画･･･Seventeen Again ★好きな色･･･#40e0d0 ★別名･･･デブ電車BOT</p>
                 </div>
               </ProfileTxts>
             </ProfileBlock>
@@ -464,7 +463,7 @@ export default class Top extends React.Component {
             <div>
               <SectionTitle><ActionText bg={'#fff'}>ENTRY</ActionText></SectionTitle>
               <Form>
-                <form name="contact" method="POST" data-netlify="true">
+                <form name="contact" method="POST" data-netlify="true" action='thanks'>
                   <input type="hidden" name="form-name" value="contact" />
                   <h4>挙式・披露宴</h4>
                   <FormCol center>
