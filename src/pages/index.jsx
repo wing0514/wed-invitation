@@ -15,7 +15,6 @@ import iconreseption from '../assets/img/icon-reseption.svg'
 import iconwedding from '../assets/img/icon-wedding.svg'
 import imgschedule from '../assets/img/img-schedule.jpg'
 import imgentry from '../assets/img/img-entry.jpg'
-import Input from '../components/atoms/input';
 import Radio from '../components/atoms/radio';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
@@ -29,6 +28,7 @@ import imgSlide07 from '../assets/img/img-slide-07.jpg';
 import imgSlide08 from '../assets/img/img-slide-08.jpg';
 import imgSlide09 from '../assets/img/img-slide-09.jpg';
 import imgSlide10 from '../assets/img/img-slide-10.jpg';
+import * as AutoKana from 'vanilla-autokana';
 
 let pictures = [
   imgSlide01,
@@ -331,14 +331,52 @@ const CarouselWrapper = styled.div`
   }
 `
 
+const Input = styled.input`
+  padding: 8px;
+  background-color: #fff;
+  box-sizing: border-box;
+  width: ${props => props.isHalf ? '50%' : '100%'};
+  &::placeholder {
+    color: ${blue};
+  }
+  &:focus {
+    outline: none;
+  }
+  & + & {
+    margin-left: 8px;
+  }
+`
+
+let autokana01, autokana02;
 export default class Top extends React.Component {
   constructor(props) {
     super(props);
     this.mainTxtGrp = null;
-    this.state = {isLoadEnd: false};
+    this.state = {isLoadEnd: false, name01: '' , name02: '', furigana01: '', furigana02: '',};
+    this.handleNameInput = this.handleNameInput.bind(this);
+  }
+  componentDidMount() {
+    autokana01 = AutoKana.bind('#last-name', '#last-name-kana');
+    autokana02 = AutoKana.bind('#first-name', '#first-name-kana');
+  }
+  handleNameInput(ev) {
+    if(ev.target.getAttribute('name') === 'last-name') {
+      this.setState({
+        name01: ev.target.value,
+        furigana01: autokana01.getFurigana(),
+      });
+    } else if(ev.target.getAttribute('name') === 'first-name') {
+      this.setState({
+        name01: ev.target.value,
+        furigana01: autokana02.getFurigana(),
+      });
+    }
   }
   loadEnd() {
     this.setState({isLoadEnd: true});
+  }
+  autoInput() {
+
   }
   render() {
     const sliderSettings = {
@@ -477,17 +515,17 @@ export default class Top extends React.Component {
                   </FormCol>
                   <h4>名前</h4>
                   <FormCol>
-                    <Input type="text" name="last-name" placeHolder="姓" isHalf/>
-                    <Input type="text" name="first-name" placeHolder="名" isHalf/>
+                    <Input type="text" name="last-name" id="last-name" placeholder="姓" isHalf/>
+                    <Input type="text" name="first-name" id="first-name" placeholder="名" isHalf/>
                   </FormCol>
                   <h4>ふりがな</h4>
                   <FormCol>
-                    <Input type="text" name="last-name-kana" placeHolder='せい' isHalf/>
-                    <Input type="text" name="first-name-kana" placeHolder='めい' isHalf/>
+                    <Input type="text" name="last-name-kana" id="last-name-kana" placeholder='せい' isHalf/>
+                    <Input type="text" name="first-name-kana" id="first-name-kana" placeholder='めい' isHalf/>
                   </FormCol>
                   <h4>郵便番号</h4>
                   <FormCol>
-                    <Input type="text" name="zip-code" id="zip" placeHolder='' isHalf/>
+                    <Input type="text" name="zip-code" id="zip" placeholder='000-0000' isHalf/>
                   </FormCol>
                   <h4>住所</h4>
                   <FormCol>

@@ -12012,6 +12012,11 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
+vanilla-autokana@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/vanilla-autokana/-/vanilla-autokana-1.1.6.tgz#e889855bf09fa03748e6251193d68d5f64a16b43"
+  integrity sha512-69nnfT06mb7zYGk7sQ315GwTvW97qN6hn4lJc043gtdjYJaSd8HunvlRi1UfD7tcyvz29DgnGvjJW6bxaJ4i+A==
+
 vary@^1, vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
