@@ -64,7 +64,7 @@ export default class Thanks extends React.Component {
   componentDidMount() {
     setTimeout(() => {
       document.body.classList.add('is-shown');
-    }, 1000)
+    }, 500)
   }
   render() {
     return(

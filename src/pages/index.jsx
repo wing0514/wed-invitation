@@ -374,7 +374,7 @@ export default class Top extends React.Component {
               <ProfileTxts>
                 <div>
                   <ProfileName>翼<span>TSUBASA</span></ProfileName>
-                  <p>永井翼（25歳）<br />★おうし座 ★A型 ★身長･･･170cm ★趣味･･･筋トレ・ラジオ観賞 ★好きな映画･･･ディズニー・マーベル・スターウォーズ ★好きな色･･･#191970 ★座右の銘･･･なんとかなる</p>
+                  <p>永井翼（25歳）<br />★おうし座 ★A型 ★身長･･･170cm ★趣味･･･筋トレ・深夜ラジオを聴く ★好きな映画･･･ディズニー・マーベル・スターウォーズ ★言語･･･日本語・HTML・CSS・JavaScript ★座右の銘･･･なんとかなる</p>
                 </div>
               </ProfileTxts>
 
@@ -384,7 +384,7 @@ export default class Top extends React.Component {
               <ProfileTxts>
                 <div>
                   <ProfileName>茜<span>AKANE</span></ProfileName>
-                  <p>堀内茜（25際）<br />★みずがめ座　★血液型･･･O型　★身長･･･154cm　★趣味･･･海外旅行　★好きな映画･･･Seventeen Again ★好きな色･･･#40e0d0 ★別名･･･デブ電車BOT</p>
+                  <p>堀内茜（25際）<br />★みずがめ座　★血液型･･･O型　★身長･･･154cm　★趣味･･･海外旅行　★好きな映画･･･Seventeen Again ★言語･･･日本語・Java・JavaScript・SQL・JSP ★別名･･･デブ電車BOT</p>
                 </div>
               </ProfileTxts>
             </ProfileBlock>
@@ -467,13 +467,13 @@ export default class Top extends React.Component {
                   <input type="hidden" name="form-name" value="contact" />
                   <h4>挙式・披露宴</h4>
                   <FormCol center>
-                    <Radio name="wedding-attend" id="attend-01" defaultChecked>出席</Radio>
-                    <Radio name="wedding-attend" id="decline-01">欠席</Radio>
+                    <Radio name="wedding-attend" id="attend-01" value="出席" defaultChecked>出席</Radio>
+                    <Radio name="wedding-attend" id="decline-01" value="欠席">欠席</Radio>
                   </FormCol>
                   <h4>二次会</h4>
                   <FormCol center>
-                    <Radio name="party-attend" id="attend-02" defaultChecked>出席</Radio>
-                    <Radio name="party-attend" id="decline-02">欠席</Radio>
+                    <Radio name="party-attend" id="attend-02" value="出席" defaultChecked>出席</Radio>
+                    <Radio name="party-attend" id="decline-02" value="欠席">欠席</Radio>
                   </FormCol>
                   <h4>名前</h4>
                   <FormCol>

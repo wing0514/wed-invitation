@@ -31,7 +31,7 @@ const Bg = styled.div`
 `
 const LoaderInner = styled.div`
   position: absolute;
-  top: -86px;
+  top: -106px;
   bottom: 0;
   right: 0;
   left: 0;
@@ -62,7 +62,7 @@ const LoaderInner = styled.div`
 `
 const LorderText = styled.div`
   position: absolute;
-  top: -40px;
+  top: -60px;
   bottom: 0;
   left: 0;
   right: 0;
