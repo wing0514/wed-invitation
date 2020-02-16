@@ -372,7 +372,7 @@ export default class Top extends React.Component {
               <ProfileTxts>
                 <div>
                   <ProfileName>茜<span>AKANE</span></ProfileName>
-                  <p>堀内茜（25際）<br />★みずがめ座 ★血液型･･･O型<br />★身長･･･154cm ★趣味･･･海外旅行<br />★好きな映画･･･Seventeen Again<br />★言語･･･日本語・Java・JavaScript・SQL・JSP ★別名･･･デブ電車BOT<br />一言･･･美味しいご飯、期待しててください！</p>
+                  <p>堀内茜（25歳）<br />★みずがめ座 ★血液型･･･O型<br />★身長･･･154cm ★趣味･･･海外旅行<br />★好きな映画･･･Seventeen Again<br />★言語･･･日本語・Java・JavaScript・SQL・JSP ★別名･･･デブ電車BOT<br />一言･･･美味しいご飯、期待しててください！</p>
                 </div>
               </ProfileTxts>
             </ProfileBlock>
