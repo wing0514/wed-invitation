@@ -362,7 +362,7 @@ export default class Top extends React.Component {
               <ProfileTxts>
                 <div>
                   <ProfileName>翼<span>TSUBASA</span></ProfileName>
-                  <p>永井翼（25歳）<br />★おうし座 ★A型 ★身長･･･170cm<br />★趣味･･･筋トレ・深夜ラジオを聴く<br />★好きな映画･･･ディズニー・マーベル・スターウォーズ<br />★言語･･･日本語・HTML・CSS・JavaScript ★座右の銘･･･なんとかなる<br />★一言･･･このサイト、僕が作ったんだよね！バグあったら、報告よろしくなんだよね！</p>
+                  <p>永井翼（25歳）<br />★おうし座 ★A型 ★身長･･･170cm<br />★趣味･･･筋トレ・深夜ラジオを聴く<br />★好きな映画･･･ディズニー・マーベル・スターウォーズ<br />★言語･･･日本語・HTML・CSS・JavaScript ★座右の銘･･･なんとかなる<br />★一言･･･このサイト、僕が作りました！バグあったら報告よろしくです！</p>
                 </div>
               </ProfileTxts>
 
