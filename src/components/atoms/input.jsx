@@ -24,8 +24,7 @@ export default class Input extends React.Component {
       }
     `
     return (
-      this.props.value ? <Container value={this.props.value} type={this.props.type} name={this.props.name} placeholder={this.props.placeHolder} id={this.props.id}></Container> :
-      <Container onInput={this.props.onInput ? this.props.onInput : null} type={this.props.type} name={this.props.name} placeholder={this.props.placeHolder} id={this.props.id}></Container>
+      <Container type={this.props.type} name={this.props.name} placeholder={this.props.placeHolder} id={this.props.id}></Container>
     );
   }
 }

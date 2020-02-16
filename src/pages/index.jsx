@@ -15,32 +15,23 @@ import iconreseption from '../assets/img/icon-reseption.svg'
 import iconwedding from '../assets/img/icon-wedding.svg'
 import imgschedule from '../assets/img/img-schedule.jpg'
 import imgentry from '../assets/img/img-entry.jpg'
+import Input from '../components/atoms/input';
 import Radio from '../components/atoms/radio';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-import imgSlide01 from '../assets/img/img-slide-01.jpg';
-import imgSlide02 from '../assets/img/img-slide-02.jpg';
-import imgSlide03 from '../assets/img/img-slide-03.jpg';
-import imgSlide04 from '../assets/img/img-slide-04.jpg';
-import imgSlide05 from '../assets/img/img-slide-05.jpg';
-import imgSlide06 from '../assets/img/img-slide-06.jpg';
-import imgSlide07 from '../assets/img/img-slide-07.jpg';
-import imgSlide08 from '../assets/img/img-slide-08.jpg';
-import imgSlide09 from '../assets/img/img-slide-09.jpg';
-import imgSlide10 from '../assets/img/img-slide-10.jpg';
-import * as AutoKana from 'vanilla-autokana';
+import Image from '../components/atoms/image';
 
 let pictures = [
-  imgSlide01,
-  imgSlide02,
-  imgSlide03,
-  imgSlide04,
-  imgSlide05,
-  imgSlide06,
-  imgSlide07,
-  imgSlide08,
-  imgSlide09,
-  imgSlide10
+  'img-slide-01.jpg',
+  'img-slide-02.jpg',
+  'img-slide-03.jpg',
+  'img-slide-04.jpg',
+  'img-slide-05.jpg',
+  'img-slide-06.jpg',
+  'img-slide-07.jpg',
+  'img-slide-08.jpg',
+  'img-slide-09.jpg',
+  'img-slide-10.jpg'
 ]
 
 for (let i = pictures.length - 1; i >= 0; i--) {
@@ -221,6 +212,9 @@ const ProfileTxts = styled.div`
   margin: 21px auto 34px;
   & > div {
     position: relative;
+    p {
+      margin-right: -1em;
+    }
   }
 `
 const ProfileName = styled.div`
@@ -331,60 +325,16 @@ const CarouselWrapper = styled.div`
   }
 `
 
-const Input = styled.input`
-  padding: 8px;
-  background-color: #fff;
-  box-sizing: border-box;
-  width: ${props => props.isHalf ? '50%' : '100%'};
-  &::placeholder {
-    color: ${blue};
-  }
-  &:focus {
-    outline: none;
-  }
-  & + & {
-    margin-left: 8px;
-  }
-`
-
-let autokana01, autokana02;
 export default class Top extends React.Component {
   constructor(props) {
     super(props);
     this.mainTxtGrp = null;
-    this.state = {isLoadEnd: false, name01: '' , name02: '', furigana01: '', furigana02: '',};
-    this.handleNameInput = this.handleNameInput.bind(this);
-  }
-  componentDidMount() {
-    autokana01 = AutoKana.bind('#last-name', '#last-name-kana');
-    autokana02 = AutoKana.bind('#first-name', '#first-name-kana');
-  }
-  handleNameInput(ev) {
-    if(ev.target.getAttribute('name') === 'last-name') {
-      this.setState({
-        name01: ev.target.value,
-        furigana01: autokana01.getFurigana(),
-      });
-    } else if(ev.target.getAttribute('name') === 'first-name') {
-      this.setState({
-        name01: ev.target.value,
-        furigana01: autokana02.getFurigana(),
-      });
-    }
+    this.state = {isLoadEnd: false};
   }
   loadEnd() {
     this.setState({isLoadEnd: true});
   }
-  autoInput() {
-
-  }
   render() {
-    const sliderSettings = {
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-    };
     return(
       <Container>
         <Loader changeState={() => this.loadEnd()}></Loader>
@@ -412,7 +362,7 @@ export default class Top extends React.Component {
               <ProfileTxts>
                 <div>
                   <ProfileName>翼<span>TSUBASA</span></ProfileName>
-                  <p>永井翼（25歳）<br />★おうし座 ★A型 ★身長･･･170cm ★趣味･･･筋トレ・深夜ラジオを聴く ★好きな映画･･･ディズニー・マーベル・スターウォーズ ★言語･･･日本語・HTML・CSS・JavaScript ★座右の銘･･･なんとかなる</p>
+                  <p>永井翼（25歳）<br />★おうし座 ★A型 ★身長･･･170cm<br />★趣味･･･筋トレ・深夜ラジオを聴く<br />★好きな映画･･･ディズニー・マーベル・スターウォーズ<br />★言語･･･日本語・HTML・CSS・JavaScript ★座右の銘･･･なんとかなる<br />★一言･･･このサイト、僕が作ったんだよね！バグあったら、報告よろしくなんだよね！</p>
                 </div>
               </ProfileTxts>
 
@@ -422,7 +372,7 @@ export default class Top extends React.Component {
               <ProfileTxts>
                 <div>
                   <ProfileName>茜<span>AKANE</span></ProfileName>
-                  <p>堀内茜（25際）<br />★みずがめ座　★血液型･･･O型　★身長･･･154cm　★趣味･･･海外旅行　★好きな映画･･･Seventeen Again ★言語･･･日本語・Java・JavaScript・SQL・JSP ★別名･･･デブ電車BOT</p>
+                  <p>堀内茜（25際）<br />★みずがめ座 ★血液型･･･O型<br />★身長･･･154cm ★趣味･･･海外旅行<br />★好きな映画･･･Seventeen Again<br />★言語･･･日本語・Java・JavaScript・SQL・JSP ★別名･･･デブ電車BOT<br />一言･･･美味しいご飯、期待しててください！</p>
                 </div>
               </ProfileTxts>
             </ProfileBlock>
@@ -431,7 +381,7 @@ export default class Top extends React.Component {
             <Carousel showThumbs={false} showStatus={false} infiniteLoop transitionTime={800}>
               {
                 pictures.map((item, i) => {
-                  return(<div key={i}><img src={item} /></div>)
+                  return(<div key={i}><Image filename={item} /></div>)
                 })
               }
             </Carousel>
@@ -515,17 +465,17 @@ export default class Top extends React.Component {
                   </FormCol>
                   <h4>名前</h4>
                   <FormCol>
-                    <Input type="text" name="last-name" id="last-name" placeholder="姓" isHalf/>
-                    <Input type="text" name="first-name" id="first-name" placeholder="名" isHalf/>
+                    <Input type="text" name="last-name" placeHolder="姓" isHalf/>
+                    <Input type="text" name="first-name" placeHolder="名" isHalf/>
                   </FormCol>
                   <h4>ふりがな</h4>
                   <FormCol>
-                    <Input type="text" name="last-name-kana" id="last-name-kana" placeholder='せい' isHalf/>
-                    <Input type="text" name="first-name-kana" id="first-name-kana" placeholder='めい' isHalf/>
+                    <Input type="text" name="last-name-kana" placeHolder='せい' isHalf/>
+                    <Input type="text" name="first-name-kana" placeHolder='めい' isHalf/>
                   </FormCol>
                   <h4>郵便番号</h4>
                   <FormCol>
-                    <Input type="text" name="zip-code" id="zip" placeholder='000-0000' isHalf/>
+                    <Input type="text" name="zip-code" id="zip" placeHolder='000-0000' isHalf/>
                   </FormCol>
                   <h4>住所</h4>
                   <FormCol>
