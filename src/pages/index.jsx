@@ -390,7 +390,7 @@ export default class Top extends React.Component {
             <div>
               <SectionTitle><ActionText isBlack>SCHEDULE</ActionText></SectionTitle>
               <h3>DATE</h3>
-              <Date>2020.4.11 <span>Sat.</span></Date>
+              <Date>2020.7.18 <span>Sat.</span></Date>
               <h3>TIMETABLE</h3>
               <Schedule>
                 <ScheduleItem icon={iconreseption}>
