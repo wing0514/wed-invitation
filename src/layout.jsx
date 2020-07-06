@@ -27,15 +27,8 @@ export default class Layout extends React.Component {
           <meta charSet="utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-          <title>招待状</title>
-          <meta name="description" content="招待状" />
-          <meta property="og:site_name" content="招待状" />
-          <meta property="og:title" content="招待状" />
-          <meta property="og:type" content="article" />
-          <meta property="og:url" content="" />
-          <meta property="og:image" content="サムネイル画像のURLをお願い致します" />
-          <meta property="og:description" content="招待状"/>
-          <meta property="og:locale" content="ja_JP" />
+          <title>結婚式・披露宴・二次会案内</title>
+          <meta name="description" content="永井 翼・茜の結婚式の案内です。" />
           <link href="https://fonts.googleapis.com/css?family=Oswald|Sawarabi+Gothic&display=swap" rel="stylesheet" />
           <script src="https://zipaddr.github.io/zipaddrj.js" charSet="UTF-8"></script>
         </Helmet>

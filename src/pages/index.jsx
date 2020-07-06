@@ -161,6 +161,14 @@ const Schedule = styled.div`
 const ScheduleItem = styled.dl`
   font-size: 13px;
   line-height: 1;
+  &:last-of-type {
+    dd {
+      align-items: flex-start;
+      &::before {
+        margin-top: 3px;
+      }
+    }
+  }
   & + dl {
     margin-top: 21px;
   }
@@ -182,11 +190,22 @@ const ScheduleItem = styled.dl`
       background-size: contain;
       background-image: url(${props => props.icon});
     }
-    span {
-      display: block;
-      margin-top: 8px;
-      font-family: ${fontHeding};
-      font-size: 21px;
+    & > div {
+      & > span {
+        display: block;
+        margin-top: 8px;
+        font-family: ${fontHeding};
+        font-size: 21px;
+      }
+      & > div {
+        margin-top: 20px;
+        padding: 10px;
+        line-height: 1.8;
+        border: 1px solid ${black};
+        & > span {
+          font-weight: bold;
+        }
+      }
     }
   }
 `
@@ -407,7 +426,15 @@ export default class Top extends React.Component {
                 </ScheduleItem>
                 <ScheduleItem icon={iconafterparty}>
                   <dt>20:00 ~</dt>
-                  <dd><div>二次会<span>SECOND PARTY</span></div></dd>
+                  <dd>
+                    <div>
+                      二次会<span>SECOND PARTY</span>
+                      <div>
+                        <span>受付開始</span><br/>19:30 〜<br/>
+                        <span>会費</span><br/>男性：8,500円<br/>女性：7,500円
+                      </div>
+                    </div>
+                    </dd>
                 </ScheduleItem>
               </Schedule>
             </div>
